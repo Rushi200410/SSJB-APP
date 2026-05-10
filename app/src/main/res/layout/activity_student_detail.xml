@@ -1,44 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/surface_bg"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:background="?attr/colorSurface">
 
-    <TextView
-        android:id="@+id/studentDetailText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:padding="14dp"
-        android:textColor="@color/brand_text"
-        android:textSize="16sp" />
+        android:orientation="vertical"
+        android:padding="18dp">
 
-    <Button
-        android:id="@+id/editStudentButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="@color/brand_primary"
-        android:text="@string/edit"
-        android:textAllCaps="false" />
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="2dp">
 
-    <Button
-        android:id="@+id/deleteStudentButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/danger"
-        android:text="@string/delete"
-        android:textAllCaps="false" />
+            <TextView
+                android:id="@+id/studentDetailText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="18dp"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="16sp" />
+        </com.google.android.material.card.MaterialCardView>
 
-    <Button
-        android:id="@+id/shareStudentAttendanceButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/brand_accent"
-        android:text="@string/share_student"
-        android:textAllCaps="false" />
-</LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/editStudentButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/edit"
+            android:textAllCaps="false" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/deleteStudentButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="?attr/colorError"
+            android:text="@string/delete"
+            android:textAllCaps="false" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/shareStudentAttendanceButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/share_student"
+            android:textAllCaps="false" />
+    </LinearLayout>
+</ScrollView>

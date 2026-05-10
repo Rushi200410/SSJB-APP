@@ -1,7 +1,19 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.SSJB" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/ssjb_primary</item>
+        <item name="colorOnPrimary">@color/ssjb_on_primary</item>
+        <item name="colorSecondary">@color/ssjb_secondary</item>
+        <item name="colorTertiary">@color/ssjb_tertiary</item>
+        <item name="colorOnBackground">@color/ssjb_on_background</item>
+        <item name="colorSurface">@color/ssjb_surface</item>
+        <item name="colorOnSurface">@color/ssjb_on_surface</item>
+        <item name="colorSurfaceVariant">@color/ssjb_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/ssjb_on_surface_variant</item>
+        <item name="colorOutline">@color/ssjb_outline</item>
+        <item name="colorError">@color/ssjb_error</item>
+        <item name="android:statusBarColor">@color/ssjb_background</item>
+        <item name="android:navigationBarColor">@color/ssjb_background</item>
+        <item name="android:windowBackground">@color/ssjb_background</item>
+        <item name="android:forceDarkAllowed">true</item>
     </style>
 </resources>

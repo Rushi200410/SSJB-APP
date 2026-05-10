@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ssjb.R;
+import com.example.ssjb.data.AttendanceRecord;
 import com.example.ssjb.data.StudentAttendanceStat;
 
 import java.util.ArrayList;
@@ -44,6 +45,14 @@ public class AttendanceMarkAdapter extends RecyclerView.Adapter<AttendanceMarkAd
 
     public Map<Integer, Boolean> getPresentMap() {
         return presentMap;
+    }
+
+    public void setPresentSelections(List<AttendanceRecord> records) {
+        presentMap.clear();
+        for (AttendanceRecord record : records) {
+            presentMap.put(record.studentId, record.present);
+        }
+        notifyDataSetChanged();
     }
 
     public List<StudentAttendanceStat> getAllItems() {

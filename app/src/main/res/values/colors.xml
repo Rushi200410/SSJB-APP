@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="surface_bg">#FFF5F8FF</color>
-    <color name="brand_primary">#FF3F51B5</color>
-    <color name="brand_accent">#FF009688</color>
-    <color name="brand_text">#FF1A1E2B</color>
-    <color name="brand_subtext">#FF6B7389</color>
-    <color name="danger">#FFD32F2F</color>
+    <color name="ssjb_primary">#1F4B99</color>
+    <color name="ssjb_secondary">#0F766E</color>
+    <color name="ssjb_tertiary">#A15E2E</color>
+    <color name="ssjb_background">#F4F7FB</color>
+    <color name="ssjb_surface">#FFFFFF</color>
+    <color name="ssjb_surface_variant">#E7EEF8</color>
+    <color name="ssjb_on_primary">#FFFFFF</color>
+    <color name="ssjb_on_background">#1E2430</color>
+    <color name="ssjb_on_surface">#1E2430</color>
+    <color name="ssjb_on_surface_variant">#5E667A</color>
+    <color name="ssjb_outline">#CCD6E2</color>
+    <color name="ssjb_error">#C62828</color>
 </resources>

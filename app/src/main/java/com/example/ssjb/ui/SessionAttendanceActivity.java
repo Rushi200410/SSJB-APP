@@ -36,6 +36,7 @@ public class SessionAttendanceActivity extends AppCompatActivity {
     private String callTitle;
     private String callDescription;
     private String callLocation;
+    private int sessionId = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class SessionAttendanceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_session_attendance);
         db = AppDatabase.getInstance(this);
 
+        sessionId = getIntent().getIntExtra("sessionId", -1);
         sessionType = getIntent().getStringExtra(SessionFormActivity.EXTRA_SESSION_TYPE);
         date = getIntent().getStringExtra("date");
         day = getIntent().getStringExtra("day");
@@ -65,7 +67,29 @@ public class SessionAttendanceActivity extends AppCompatActivity {
         );
         submitButton.setOnClickListener(v -> saveSessionAndGeneratePdf());
 
+        if (sessionId > 0) {
+            loadSessionForEdit();
+        }
         loadStudentsSortedByAttendance();
+    }
+
+    private void loadSessionForEdit() {
+        AppExecutors.db().execute(() -> {
+            AttendanceSession session = db.sessionDao().getById(sessionId);
+            if (session == null) {
+                return;
+            }
+            date = session.dateIso;
+            day = session.dayLabel;
+            time = session.timeLabel;
+            sessionType = session.sessionType;
+            classMode = session.classMode;
+            callTitle = session.callTitle;
+            callDescription = session.callDescription;
+            callLocation = session.location;
+            List<AttendanceRecord> records = db.attendanceRecordDao().getRecordsForSession(sessionId);
+            runOnUiThread(() -> adapter.setPresentSelections(records));
+        });
     }
 
     private void loadStudentsSortedByAttendance() {
@@ -83,26 +107,32 @@ public class SessionAttendanceActivity extends AppCompatActivity {
     private void saveSessionAndGeneratePdf() {
         AppExecutors.db().execute(() -> {
             try {
-                AttendanceSession session = new AttendanceSession(
-                        sessionType,
-                        date == null || date.isEmpty() ? DateUtils.todayIso() : date,
-                        day == null ? "" : day,
-                        time == null ? "" : time,
-                        classMode,
-                        callTitle,
-                        callDescription,
-                        callLocation
-                );
-                int sessionId = (int) db.sessionDao().insert(session);
-                session.id = sessionId;
+                AttendanceSession session = sessionId > 0
+                        ? db.sessionDao().getById(sessionId)
+                        : null;
+                if (session == null) {
+                    session = new AttendanceSession(
+                            sessionType,
+                            date == null || date.isEmpty() ? DateUtils.todayIso() : date,
+                            day == null ? "" : day,
+                            time == null ? "" : time,
+                            classMode,
+                            callTitle,
+                            callDescription,
+                            callLocation
+                    );
+                    sessionId = (int) db.sessionDao().insert(session);
+                    session.id = sessionId;
+                }
 
                 List<AttendanceRecord> records = new ArrayList<>();
                 for (StudentAttendanceStat st : adapter.getAllItems()) {
                     boolean present = adapter.getPresentMap().getOrDefault(st.id, true);
-                    records.add(new AttendanceRecord(sessionId, st.id, present));
+                    records.add(new AttendanceRecord(session.id, st.id, present));
                 }
+                db.attendanceRecordDao().deleteBySessionId(session.id);
                 db.attendanceRecordDao().insertAll(records);
-                List<com.example.ssjb.data.SessionStudentRow> rows = db.attendanceRecordDao().getRowsForSession(sessionId);
+                List<com.example.ssjb.data.SessionStudentRow> rows = db.attendanceRecordDao().getRowsForSession(session.id);
                 File pdf = PdfGenerator.generate(this, session, rows);
                 runOnUiThread(() -> sharePdf(pdf));
             } catch (Exception ex) {

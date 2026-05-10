@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/surface_bg"
+    android:background="?attr/colorSurface"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="18dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:backgroundTint="?attr/colorPrimary"
             android:text="@string/search" />
     </LinearLayout>
 
@@ -38,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:backgroundTint="@color/brand_primary"
+        android:backgroundTint="?attr/colorPrimary"
         android:text="@string/submit_and_generate_pdf"
         android:textAllCaps="false" />
 </LinearLayout>

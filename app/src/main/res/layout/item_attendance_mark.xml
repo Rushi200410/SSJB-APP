@@ -24,14 +24,14 @@
                 android:id="@+id/markStudentName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/brand_text"
+                android:textColor="?attr/colorOnSurface"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/markStudentPercent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/brand_subtext" />
+                android:textColor="?attr/colorOnSurfaceVariant" />
         </LinearLayout>
 
         <CheckBox

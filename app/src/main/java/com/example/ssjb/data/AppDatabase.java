@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 
 @Database(
         entities = {Student.class, AttendanceSession.class, AttendanceRecord.class},
-        version = 1,
+        version = 2,
         exportSchema = false
 )
 public abstract class AppDatabase extends RoomDatabase {
@@ -28,7 +28,9 @@ public abstract class AppDatabase extends RoomDatabase {
                             context.getApplicationContext(),
                             AppDatabase.class,
                             "ssjb_db"
-                    ).build();
+                    )
+                            .fallbackToDestructiveMigration()
+                            .build();
                 }
             }
         }

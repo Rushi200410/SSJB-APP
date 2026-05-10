@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ssjb_primary">#9BB7FF</color>
+    <color name="ssjb_secondary">#72D6CB</color>
+    <color name="ssjb_tertiary">#F6B36B</color>
+    <color name="ssjb_background">#0F141C</color>
+    <color name="ssjb_surface">#171D27</color>
+    <color name="ssjb_surface_variant">#222A36</color>
+    <color name="ssjb_on_primary">#0F141C</color>
+    <color name="ssjb_on_background">#EAF0FF</color>
+    <color name="ssjb_on_surface">#EAF0FF</color>
+    <color name="ssjb_on_surface_variant">#AAB4C3</color>
+    <color name="ssjb_outline">#394456</color>
+    <color name="ssjb_error">#FF8A80</color>
+</resources>

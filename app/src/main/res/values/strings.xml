@@ -1,41 +1,70 @@
 <resources>
     <string name="app_name">Band Attendance</string>
     <string name="home_title">Band Group</string>
-    <string name="home_subtitle">Attendance management made simple</string>
+    <string name="home_subtitle">Attendance management made clean, fast, and clear</string>
     <string name="students">Students</string>
     <string name="class_label">Class</string>
     <string name="call_label">Call</string>
+    <string name="history">History</string>
+    <string name="students_section">Students</string>
+    <string name="students_section_hint">Add and manage member profiles.</string>
+    <string name="sessions_section">Class / Call</string>
+    <string name="sessions_section_hint">Start a new attendance sheet.</string>
+    <string name="history_section">Class / Call History</string>
+    <string name="history_section_hint">Review and edit past attendance records.</string>
     <string name="add_student">Add student</string>
     <string name="long_press_tip">Long press a student row to open details.</string>
     <string name="student_form">Student Form</string>
-    <string name="student_name">Student name</string>
+    <string name="student_name">First name</string>
+    <string name="middle_name">Middle name</string>
+    <string name="surname">Surname</string>
+    <string name="phone_number">Phone number</string>
+    <string name="address">Address</string>
+    <string name="joining_date">Joining date</string>
+    <string name="knowledge_level">How much do they know</string>
+    <string name="last_update">Last updated</string>
     <string name="balance_hint">Balance (optional, positive/negative)</string>
+    <string name="optional_hint">Optional</string>
+    <string name="select_date">Select date</string>
     <string name="save">Save</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
-    <string name="share_student">Share Student Attendance</string>
+    <string name="share_student">Share Student PDF</string>
     <string name="enter_name">Enter student name</string>
     <string name="invalid_balance">Enter valid balance amount</string>
     <string name="loading">Loading...</string>
     <string name="class_details">Class Details</string>
     <string name="call_details">Call Details</string>
-    <string name="date_hint">Date (YYYY-MM-DD)</string>
-    <string name="day_hint">Day (Monday, Tuesday...)</string>
-    <string name="time_hint">Time (7:00 PM)</string>
+    <string name="date_hint">Date</string>
+    <string name="day_hint">Day</string>
+    <string name="time_hint">Time</string>
     <string name="call_title">Call title</string>
     <string name="call_description">Call description</string>
     <string name="call_location">Location</string>
     <string name="continue_next">Continue</string>
-    <string name="fill_required">Fill date, day and time</string>
+    <string name="fill_required">Please choose date and time</string>
     <string name="search_student">Search student</string>
     <string name="search">Search</string>
     <string name="present">Present</string>
     <string name="submit_and_generate_pdf">Submit + Generate PDF</string>
     <string name="share_pdf">Share attendance PDF</string>
+    <string name="history_title">Attendance History</string>
+    <string name="open_session">Open session</string>
+    <string name="edit_attendance">Edit attendance</string>
+    <string name="session_summary">Session summary</string>
+    <string name="no_sessions">No attendance history yet.</string>
+    <string name="session_type_class">Class</string>
+    <string name="session_type_call">Call</string>
+    <string name="session_meta">Date: %1$s  |  Time: %2$s</string>
+    <string name="session_counts">Present: %1$d  |  Total: %2$d</string>
+    <string name="student_pdf_title">Student profile</string>
+    <string name="attendance_pdf_title">Attendance summary</string>
+    <string name="unknown_value">Not set</string>
+    <string name="last_updated_format">Last updated: %1$s</string>
 
     <string-array name="instrument_options">
         <item>Sidedrum</item>
-        <item>Base</item>
+        <item>Bass</item>
         <item>Flute</item>
         <item>Small Parts</item>
     </string-array>
@@ -43,5 +72,13 @@
     <string-array name="class_mode_options">
         <item>Practice Class</item>
         <item>Sir\'s Class</item>
+    </string-array>
+
+    <string-array name="knowledge_options">
+        <item>Beginner</item>
+        <item>Learning</item>
+        <item>Intermediate</item>
+        <item>Advanced</item>
+        <item>Expert</item>
     </string-array>
 </resources>

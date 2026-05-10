@@ -13,6 +13,7 @@
         android:theme="@style/Theme.SSJB">
         <activity android:name=".ui.StudentDetailActivity" />
         <activity android:name=".ui.StudentFormActivity" />
+        <activity android:name=".ui.SessionHistoryActivity" />
         <activity android:name=".ui.SessionAttendanceActivity" />
         <activity android:name=".ui.SessionFormActivity" />
         <activity android:name=".ui.StudentsActivity" />
