@@ -26,7 +26,7 @@ public interface StudentDao {
     Student getById(int id);
 
     @Query(
-            "SELECT s.id, s.name, s.instrument, s.balance, " +
+            "SELECT s.id, s.name, s.middleName, s.surname, s.instrument, s.balance, " +
                     "SUM(CASE WHEN ass.id IS NOT NULL THEN 1 ELSE 0 END) AS totalSessions, " +
                     "SUM(CASE WHEN ass.id IS NOT NULL AND ar.present = 1 THEN 1 ELSE 0 END) AS presentCount " +
                     "FROM students s " +
@@ -39,7 +39,7 @@ public interface StudentDao {
     List<StudentAttendanceStat> getStudentStatsFromDate(String fromDateIso);
 
     @Query(
-            "SELECT s.id, s.name, s.instrument, s.balance, " +
+            "SELECT s.id, s.name, s.middleName, s.surname, s.instrument, s.balance, " +
                     "SUM(CASE WHEN ass.id IS NOT NULL THEN 1 ELSE 0 END) AS totalSessions, " +
                     "SUM(CASE WHEN ass.id IS NOT NULL AND ar.present = 1 THEN 1 ELSE 0 END) AS presentCount " +
                     "FROM students s " +

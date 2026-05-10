@@ -3,6 +3,8 @@ package com.example.ssjb.data;
 public class StudentAttendanceStat {
     public int id;
     public String name;
+    public String middleName;
+    public String surname;
     public String instrument;
     public Double balance;
     public int totalSessions;

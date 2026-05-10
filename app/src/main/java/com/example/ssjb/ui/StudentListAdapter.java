@@ -20,7 +20,8 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
         void onLongPress(StudentAttendanceStat student);
     }
 
-    private final List<StudentAttendanceStat> items = new ArrayList<>();
+    private final List<StudentAttendanceStat> allItems = new ArrayList<>();
+    private final List<StudentAttendanceStat> visibleItems = new ArrayList<>();
     private final OnStudentLongPress onStudentLongPress;
 
     public StudentListAdapter(OnStudentLongPress onStudentLongPress) {
@@ -28,8 +29,21 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
     }
 
     public void setItems(List<StudentAttendanceStat> data) {
-        items.clear();
-        items.addAll(data);
+        allItems.clear();
+        allItems.addAll(data);
+        visibleItems.clear();
+        visibleItems.addAll(data);
+        notifyDataSetChanged();
+    }
+
+    public void filter(String query) {
+        String q = query == null ? "" : query.toLowerCase(Locale.US).trim();
+        visibleItems.clear();
+        for (StudentAttendanceStat item : allItems) {
+            if (matches(item, q)) {
+                visibleItems.add(item);
+            }
+        }
         notifyDataSetChanged();
     }
 
@@ -42,8 +56,8 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
-        StudentAttendanceStat item = items.get(position);
-        holder.name.setText(item.name);
+        StudentAttendanceStat item = visibleItems.get(position);
+        holder.name.setText(buildFullName(item));
         holder.instrument.setText(item.instrument);
         double percent = item.totalSessions == 0 ? 0 : (item.presentCount * 100.0 / item.totalSessions);
         holder.percent.setText(String.format(Locale.US, "%.1f%% (30d)", percent));
@@ -55,7 +69,7 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return visibleItems.size();
     }
 
     static class VH extends RecyclerView.ViewHolder {
@@ -69,5 +83,35 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
             instrument = itemView.findViewById(R.id.studentInstrument);
             percent = itemView.findViewById(R.id.studentPercent);
         }
+    }
+
+    private boolean matches(StudentAttendanceStat item, String query) {
+        if (query.isEmpty()) {
+            return true;
+        }
+        return buildFullName(item).toLowerCase(Locale.US).contains(query)
+                || safe(item.instrument).toLowerCase(Locale.US).contains(query);
+    }
+
+    private String buildFullName(StudentAttendanceStat item) {
+        StringBuilder builder = new StringBuilder();
+        append(builder, item.name);
+        append(builder, item.middleName);
+        append(builder, item.surname);
+        return builder.length() == 0 ? "-" : builder.toString();
+    }
+
+    private void append(StringBuilder builder, String value) {
+        if (value == null || value.trim().isEmpty()) {
+            return;
+        }
+        if (builder.length() > 0) {
+            builder.append(' ');
+        }
+        builder.append(value.trim());
+    }
+
+    private String safe(String value) {
+        return value == null || value.trim().isEmpty() ? "-" : value.trim();
     }
 }
