@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_bg"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/studentDetailText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="14dp"
+        android:textColor="@color/brand_text"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/editStudentButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/brand_primary"
+        android:text="@string/edit"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/deleteStudentButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/danger"
+        android:text="@string/delete"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/shareStudentAttendanceButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/brand_accent"
+        android:text="@string/share_student"
+        android:textAllCaps="false" />
+</LinearLayout>

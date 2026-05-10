@@ -1,24 +1,35 @@
 package com.example.ssjb;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.example.ssjb.ui.SessionFormActivity;
+import com.example.ssjb.ui.StudentsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        Button studentsButton = findViewById(R.id.studentsButton);
+        Button classButton = findViewById(R.id.classButton);
+        Button callButton = findViewById(R.id.callButton);
+
+        studentsButton.setOnClickListener(v -> startActivity(new Intent(this, StudentsActivity.class)));
+        classButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, SessionFormActivity.class);
+            intent.putExtra(SessionFormActivity.EXTRA_SESSION_TYPE, "CLASS");
+            startActivity(intent);
+        });
+        callButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, SessionFormActivity.class);
+            intent.putExtra(SessionFormActivity.EXTRA_SESSION_TYPE, "CALL");
+            startActivity(intent);
         });
     }
 }

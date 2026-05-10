@@ -1,3 +1,47 @@
 <resources>
-    <string name="app_name">SSJB</string>
+    <string name="app_name">Band Attendance</string>
+    <string name="home_title">Band Group</string>
+    <string name="home_subtitle">Attendance management made simple</string>
+    <string name="students">Students</string>
+    <string name="class_label">Class</string>
+    <string name="call_label">Call</string>
+    <string name="add_student">Add student</string>
+    <string name="long_press_tip">Long press a student row to open details.</string>
+    <string name="student_form">Student Form</string>
+    <string name="student_name">Student name</string>
+    <string name="balance_hint">Balance (optional, positive/negative)</string>
+    <string name="save">Save</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="share_student">Share Student Attendance</string>
+    <string name="enter_name">Enter student name</string>
+    <string name="invalid_balance">Enter valid balance amount</string>
+    <string name="loading">Loading...</string>
+    <string name="class_details">Class Details</string>
+    <string name="call_details">Call Details</string>
+    <string name="date_hint">Date (YYYY-MM-DD)</string>
+    <string name="day_hint">Day (Monday, Tuesday...)</string>
+    <string name="time_hint">Time (7:00 PM)</string>
+    <string name="call_title">Call title</string>
+    <string name="call_description">Call description</string>
+    <string name="call_location">Location</string>
+    <string name="continue_next">Continue</string>
+    <string name="fill_required">Fill date, day and time</string>
+    <string name="search_student">Search student</string>
+    <string name="search">Search</string>
+    <string name="present">Present</string>
+    <string name="submit_and_generate_pdf">Submit + Generate PDF</string>
+    <string name="share_pdf">Share attendance PDF</string>
+
+    <string-array name="instrument_options">
+        <item>Sidedrum</item>
+        <item>Base</item>
+        <item>Flute</item>
+        <item>Small Parts</item>
+    </string-array>
+
+    <string-array name="class_mode_options">
+        <item>Practice Class</item>
+        <item>Sir\'s Class</item>
+    </string-array>
 </resources>

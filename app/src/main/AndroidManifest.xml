@@ -11,6 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SSJB">
+        <activity android:name=".ui.StudentDetailActivity" />
+        <activity android:name=".ui.StudentFormActivity" />
+        <activity android:name=".ui.SessionAttendanceActivity" />
+        <activity android:name=".ui.SessionFormActivity" />
+        <activity android:name=".ui.StudentsActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -20,6 +25,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>
