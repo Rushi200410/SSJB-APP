@@ -13,6 +13,9 @@ public interface StudentDao {
     @Insert
     long insert(Student student);
 
+    @Insert
+    List<Long> insertAll(List<Student> students);
+
     @Update
     int update(Student student);
 

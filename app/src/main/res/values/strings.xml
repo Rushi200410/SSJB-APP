@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Band Attendance</string>
+    <string name="app_name">SSJB Attendance</string>
     <string name="home_title">Band Group</string>
     <string name="home_subtitle">Attendance management made clean, fast, and clear</string>
     <string name="students">Students</string>
@@ -13,6 +13,9 @@
     <string name="history_section">Class / Call History</string>
     <string name="history_section_hint">Review and edit past attendance records.</string>
     <string name="add_student">Add student</string>
+    <string name="import_csv">Import CSV</string>
+    <string name="csv_imported">Imported %1$d students</string>
+    <string name="csv_import_failed">Could not import CSV</string>
     <string name="long_press_tip">Long press a student row to open details.</string>
     <string name="student_form">Student Form</string>
     <string name="student_name">First name</string>
