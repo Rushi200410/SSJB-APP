@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "20084785303",
+    "project_id": "ssjb-band-app",
+    "storage_bucket": "ssjb-band-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:20084785303:android:62589640163d6f94be69d2",
+        "android_client_info": {
+          "package_name": "com.example.ssjb"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxvyMVg3AJVmrQEB5wTA-CoItwvcJN79s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
