@@ -2,6 +2,7 @@ package com.example.ssjb.data;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "students")
@@ -25,6 +26,10 @@ public class Student {
     public String lastUpdatedIso;
     public Double balance;
 
+    public Student() {
+    }
+
+    @Ignore
     public Student(
             @NonNull String name,
             String middleName,

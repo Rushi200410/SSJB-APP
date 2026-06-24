@@ -15,6 +15,8 @@ import com.example.ssjb.data.AppDatabase;
 import com.example.ssjb.data.Student;
 import com.example.ssjb.util.AppExecutors;
 import com.example.ssjb.util.DateUtils;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.android.material.datepicker.MaterialDatePicker;
 
 import java.util.Calendar;
@@ -166,36 +168,44 @@ public class StudentFormActivity extends AppCompatActivity {
         String safeJoiningDate = joiningDateIso == null || joiningDateIso.trim().isEmpty()
                 ? DateUtils.todayIso()
                 : joiningDateIso;
+        Student student = new Student(
+                name,
+                middleName,
+                surname,
+                phone,
+                instrument,
+                address,
+                safeJoiningDate,
+                knowledge,
+                lastUpdatedIso,
+                balance
+        );
 
         AppExecutors.db().execute(() -> {
             if (studentId > 0 && current != null) {
-                current.name = name;
-                current.middleName = middleName;
-                current.surname = surname;
-                current.phoneNumber = phone;
-                current.instrument = instrument;
-                current.address = address;
-                current.joiningDateIso = safeJoiningDate;
-                current.knowledgeLevel = knowledge;
-                current.lastUpdatedIso = lastUpdatedIso;
-                current.balance = balance;
-                db.studentDao().update(current);
+                student.id = current.id;
+                db.studentDao().update(student);
+                runOnUiThread(this::finish);
             } else {
-                db.studentDao().insert(new Student(
-                        name,
-                        middleName,
-                        surname,
-                        phone,
-                        instrument,
-                        address,
-                        safeJoiningDate,
-                        knowledge,
-                        lastUpdatedIso,
-                        balance
-                ));
+                long localId = db.studentDao().insert(student);
+                student.id = (int) localId;
+                pushStudentToFirebase(student);
             }
-            runOnUiThread(this::finish);
         });
+    }
+
+    private void pushStudentToFirebase(Student student) {
+        DatabaseReference studentsRef = FirebaseDatabase.getInstance().getReference("students");
+        studentsRef.push().setValue(student)
+                .addOnSuccessListener(unused -> runOnUiThread(this::finish))
+                .addOnFailureListener(e -> runOnUiThread(() -> {
+                    Toast.makeText(
+                            this,
+                            "Saved locally, but Firebase sync failed: " + e.getMessage(),
+                            Toast.LENGTH_LONG
+                    ).show();
+                    finish();
+                }));
     }
 
     private String valueOf(EditText input) {
